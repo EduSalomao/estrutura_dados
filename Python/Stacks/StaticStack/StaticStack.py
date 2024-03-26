@@ -5,6 +5,10 @@ class StaticStack:
  
     def isEmpty(self) -> bool:
         return self.__pointer == -1
+    
+    def Top(self):
+        if not self.isEmpty():
+            print(self.__DataArray[self.__pointer])
   
     def showData(self):
         if self.isEmpty():
@@ -25,10 +29,4 @@ class StaticStack:
     def Pop(self):
         if not self.isEmpty():
             self.__pointer -= 1
-
-    def Top(self):
-        if not self.isEmpty():
-            print(self.__DataArray[self.__pointer])
-
-
- 
+            

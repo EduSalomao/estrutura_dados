@@ -1,4 +1,6 @@
-class PilhaEstatica : Empilhavel {
+import Stackable
+
+class PilhaEstatica : Stackable {
   private var ponteiroTopo: Int
   private var dados: Array<Any?>
 
@@ -9,15 +11,15 @@ class PilhaEstatica : Empilhavel {
     dados = arrayOfNulls(tamanho)
   }
 
-  override fun estaCheia(): Boolean {
+  override fun isFull(): Boolean {
     return (ponteiroTopo == dados.size - 1)
   }
 
-  override fun estaVazia (): Boolean {
+  override fun isEmpty(): Boolean {
     return (ponteiroTopo == -1)
   }
 
-  override fun imprimir(): String {
+  override fun print(): String {
     var resultado: String = "["
     for (i in ponteiroTopo downTo 0) {
       if(i == 0) 
@@ -29,26 +31,26 @@ class PilhaEstatica : Empilhavel {
   }
 
 
-  override fun topo(): Any? {
-    return !estaVazia() ? dados[ponteiroTopo] : print("A lista está vazia!")
+  override fun top(): Any? {
+    return !isEmpty() ? dados[ponteiroTopo] : print("Stack is empty!")
   }
 
-  override fun empilhar(dado: Any?) {
-    if(!estaCheia()) {
+  override fun stack(dado: Any?) {
+    if(!isFull()) {
       ponteiroTopo++
       dados[ponteiroTopo] = dado
     } else {
-      print("A pilha está cheia!")
+      print("Stack is full!")
     }
   }
 
-  override fun desempilhar(): Any? {
+  override fun unstack(): Any? {
     var retorno: Any? = null
-    if(!estaVazia()) {
+    if(!isEmpty()) {
       retorno = dados[ponteiroTopo]
       ponteiroTopo++
     } else {
-      print("A pilha está vazia!")
+      print("Stack is empty!")
     }
     return retorno
   }  
